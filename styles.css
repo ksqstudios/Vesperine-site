@@ -1,0 +1,409 @@
+/* ──────────────────────────────────────────────────────────────────────
+   Vesperine - vesperine.app
+   Cream paper, warmed. A candle-lit wash beneath quiet typography.
+   Same house template as the other KSQ sites, recolored to the
+   Ivory-to-Coal candle palette and tinted like Winnowed rather than
+   left achromatic like Endured.
+   ────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Palette. House cream paper; candle stages warm the accents and wash. */
+  --paper:        #FAF5EC;   /* page background; matches every KSQ site */
+  --paper-deep:   #F0E6CB;   /* subtle inset, used for screenshot frames */
+  --ink:          #2A2018;   /* primary text, a warm near-black */
+  --muted:        #6E6155;   /* secondary text, warm taupe */
+  --hairline:     rgba(90, 51, 24, 0.16);
+
+  --amber:        #A87838;   /* signature accent: italics, numbers, hovers */
+  --amber-deep:   #7E4F1E;
+  --honey:        #EDC788;   /* wash only */
+  --bronze:       #5A3318;   /* wash only */
+
+  /* Type */
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Layout */
+  --max-content: 720px;       /* prose pages */
+  --max-wide:    1080px;      /* hero, screen grid */
+  --gutter:      24px;
+}
+
+/* ───────────────────── Reset / base ───────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--hairline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+}
+a:hover { text-decoration-color: var(--amber); }
+
+p { margin: 0 0 1.2em 0; }
+em { font-style: italic; }
+
+/* ───────────────────── Ambient wash ─────────────────────
+   A whisper of the candle palette behind the cream. Body background
+   propagates to the canvas, so this fixed layer reads over it. */
+
+.wash {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 520px at 12% -8%,  rgba(237, 199, 136, 0.22), transparent 60%),
+    radial-gradient(ellipse 720px 420px at 92% 6%,   rgba(168, 120, 56, 0.14), transparent 60%),
+    radial-gradient(ellipse 820px 520px at 50% 112%, rgba(90, 51, 24, 0.12),   transparent 62%);
+}
+
+/* ───────────────────── Header ───────────────────── */
+
+.site-header {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 28px var(--gutter) 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.brand {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-tag {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+/* ───────────────────── Main containers ───────────────────── */
+
+main {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main.prose { max-width: var(--max-content); }
+
+main > section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+main > section:first-child { padding-top: 80px; }
+main > section:last-child  { border-bottom: none; }
+
+/* ───────────────────── Hero ───────────────────── */
+
+.hero {
+  text-align: left;
+  padding-top: 120px !important;
+  padding-bottom: 100px !important;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px 0;
+  max-width: 18ch;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--amber);
+}
+
+.hero .lede {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 56ch;
+  margin: 0 0 40px 0;
+}
+
+.hero .coming-soon {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.appstore-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+.appstore-link:hover { border-color: var(--amber); }
+
+/* ───────────────────── Section headings ───────────────────── */
+
+main h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 32px 0;
+}
+
+main h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+}
+
+/* ───────────────────── The idea ───────────────────── */
+
+.idea { max-width: 64ch; }
+.idea p { font-size: 19px; line-height: 1.65; }
+
+/* ───────────────────── The app - screen grid ───────────────────── */
+
+.screens-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 12px;
+}
+
+.screens-grid figure { margin: 0; }
+
+.screens-grid img {
+  width: 100%;
+  border-radius: 28px;
+  background: var(--paper-deep);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 12px 32px rgba(42, 32, 24, 0.10);
+}
+
+.screens-grid figcaption {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-style: normal;
+}
+.screens-grid figcaption em {
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ───────────────────── Also - numbered features ───────────────────── */
+
+.also-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin: 64px 0;
+}
+.also-item:first-of-type { margin-top: 12px; }
+.also-item:nth-of-type(even) { direction: rtl; }
+.also-item:nth-of-type(even) > * { direction: ltr; }
+
+.also-item img {
+  width: 100%;
+  border-radius: 24px;
+  background: var(--paper-deep);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 12px 32px rgba(42, 32, 24, 0.10);
+}
+
+.also-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--amber);
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+}
+
+.also-text p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ───────────────────── Made by ───────────────────── */
+
+.madeby { max-width: 60ch; }
+.madeby p { font-size: 17px; line-height: 1.65; color: var(--ink); }
+
+/* ───────────────────── Prose pages (privacy, support) ───────────────────── */
+
+main.prose h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 80px 0 12px 0;
+  color: var(--ink);
+}
+
+main.prose .updated {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 48px;
+}
+
+main.prose h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  margin: 56px 0 16px 0;
+}
+
+main.prose h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  margin: 36px 0 8px 0;
+}
+
+main.prose p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+main.prose { padding-bottom: 100px; }
+
+/* ───────────────────── Footer ───────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 32px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.site-footer p { margin: 0; }
+.site-footer nav { display: flex; gap: 24px; }
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 3px;
+}
+
+/* ───────────────────── Fade-in on scroll ───────────────────── */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .fade-in.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ───────────────────── Responsive ───────────────────── */
+
+@media (max-width: 1000px) {
+  .screens-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 800px) {
+  body { font-size: 16px; }
+
+  .hero {
+    padding-top: 80px !important;
+    padding-bottom: 64px !important;
+  }
+  .hero .lede { font-size: 18px; }
+
+  main > section { padding: 56px 0; }
+
+  .screens-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .also-item {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 56px 0;
+  }
+  .also-item:nth-of-type(even) { direction: ltr; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-top: 20px;
+  }
+  .brand-tag { font-size: 12px; }
+}
