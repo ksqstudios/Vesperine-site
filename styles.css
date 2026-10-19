@@ -1,409 +1,461 @@
-/* ──────────────────────────────────────────────────────────────────────
-   Vesperine - vesperine.app
-   Cream paper, warmed. A candle-lit wash beneath quiet typography.
-   Same house template as the other KSQ sites, recolored to the
-   Ivory-to-Coal candle palette and tinted like Winnowed rather than
-   left achromatic like Endured.
-   ────────────────────────────────────────────────────────────────────── */
+/*
+  vesperine.app
+
+  Candlelight, after dark, like the app. Coal paper, cream ink, honey for
+  the Mirror and amber for dates. A candle glow sits in the corner and
+  burns down as you read toward the end. Sections are set like journal
+  leaves, with the heading in the margin.
+
+  Cormorant Garamond for display, Newsreader for reading.
+
+  No analytics. The privacy policy says the site collects nothing, so keep
+  it that way.
+*/
 
 :root {
-  /* Palette. House cream paper; candle stages warm the accents and wash. */
-  --paper:        #FAF5EC;   /* page background; matches every KSQ site */
-  --paper-deep:   #F0E6CB;   /* subtle inset, used for screenshot frames */
-  --ink:          #2A2018;   /* primary text, a warm near-black */
-  --muted:        #6E6155;   /* secondary text, warm taupe */
-  --hairline:     rgba(90, 51, 24, 0.16);
+  --coal: #1a0f08;
+  --coal-2: #22140b;
+  --leaf: #26170d;
+  --cream: #f1e4cc;
+  --muted: #b39d82;
+  --amber: #c99652;
+  --honey: #edc788;
+  --hair: rgba(237, 199, 136, 0.16);
 
-  --amber:        #A87838;   /* signature accent: italics, numbers, hovers */
-  --amber-deep:   #7E4F1E;
-  --honey:        #EDC788;   /* wash only */
-  --bronze:       #5A3318;   /* wash only */
+  --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --body: Newsreader, "Iowan Old Style", Georgia, serif;
 
-  /* Type */
-  --serif: 'Fraunces', Georgia, serif;
-  --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --page: 72rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
 
-  /* Layout */
-  --max-content: 720px;       /* prose pages */
-  --max-wide:    1080px;      /* hero, screen grid */
-  --gutter:      24px;
+  /* Set by the script: 1 at the top of the page, lower toward the end. */
+  --burn: 1;
 }
 
-/* ───────────────────── Reset / base ───────────────────── */
-
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+
+html { -webkit-text-size-adjust: 100%; background: var(--coal); }
+
 body {
   margin: 0;
-  font-family: var(--sans);
-  font-size: 17px;
+  background: var(--coal);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 1.2rem;
   line-height: 1.6;
-  color: var(--ink);
-  background: var(--paper);
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; height: auto; display: block; }
 
-a {
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--hairline);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s ease;
-}
-a:hover { text-decoration-color: var(--amber); }
+a { color: inherit; text-decoration-color: var(--amber); text-underline-offset: 0.2em; }
+a:hover { color: var(--honey); }
 
-p { margin: 0 0 1.2em 0; }
+:focus-visible { outline: 2px solid var(--honey); outline-offset: 4px; border-radius: 2px; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
+
+p { margin: 0 0 1rem; }
+
 em { font-style: italic; }
 
-/* ───────────────────── Ambient wash ─────────────────────
-   A whisper of the candle palette behind the cream. Body background
-   propagates to the canvas, so this fixed layer reads over it. */
-
-.wash {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 900px 520px at 12% -8%,  rgba(237, 199, 136, 0.22), transparent 60%),
-    radial-gradient(ellipse 720px 420px at 92% 6%,   rgba(168, 120, 56, 0.14), transparent 60%),
-    radial-gradient(ellipse 820px 520px at 50% 112%, rgba(90, 51, 24, 0.12),   transparent 62%);
-}
-
-/* ───────────────────── Header ───────────────────── */
-
-.site-header {
-  max-width: var(--max-wide);
-  margin: 0 auto;
-  padding: 28px var(--gutter) 0;
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.brand {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -0.01em;
+.button {
+  display: inline-block;
+  background: var(--honey);
+  color: var(--coal);
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 1.05rem;
   text-decoration: none;
-  color: var(--ink);
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
 }
 
-.brand-tag {
-  font-family: var(--sans);
-  font-size: 13px;
-  color: var(--muted);
-  letter-spacing: 0.01em;
+.button:hover { color: var(--coal); background: #f4d6a2; }
+
+.buy { margin-top: 2rem; }
+
+/* ---------- The candle ---------- */
+
+.candle {
+  position: fixed;
+  top: -35vmax;
+  right: -30vmax;
+  width: 95vmax;
+  height: 95vmax;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(237, 168, 88, 0.26), rgba(201, 120, 52, 0.1) 45%, transparent 72%);
+  opacity: var(--burn);
+  transition: opacity 0.4s linear;
+  animation: flicker 5.5s ease-in-out infinite;
 }
 
-/* ───────────────────── Main containers ───────────────────── */
+@keyframes flicker {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  18% { transform: scale(1.015) translate(-0.3%, 0.2%); filter: brightness(1.06); }
+  31% { transform: scale(0.99); filter: brightness(0.95); }
+  47% { transform: scale(1.02) translate(0.2%, -0.2%); filter: brightness(1.04); }
+  63% { transform: scale(0.995); filter: brightness(0.97); }
+  80% { transform: scale(1.01) translate(-0.2%, 0); filter: brightness(1.03); }
+}
 
-main {
-  max-width: var(--max-wide);
+main, .bar, .foot { position: relative; z-index: 1; }
+
+/* ---------- Bar ---------- */
+
+.bar-inner {
+  max-width: var(--page);
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding: 1.5rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-main.prose { max-width: var(--max-content); }
-
-main > section {
-  padding: 80px 0;
-  border-bottom: 1px solid var(--hairline);
+.mark {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: var(--honey);
 }
-main > section:first-child { padding-top: 80px; }
-main > section:last-child  { border-bottom: none; }
 
-/* ───────────────────── Hero ───────────────────── */
+.bar nav { display: flex; align-items: center; gap: 1.5rem; font-size: 1.05rem; }
+.bar nav a { text-decoration: none; }
+.bar-cta { border: 1px solid var(--hair); padding: 0.3rem 1rem; border-radius: 999px; }
+.bar-cta:hover { border-color: var(--honey); }
+
+/* ---------- Hero ---------- */
 
 .hero {
-  text-align: left;
-  padding-top: 120px !important;
-  padding-bottom: 100px !important;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(4rem, 9vw, 7rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
 }
+
+.kicker { color: var(--amber); font-size: 1.05rem; margin-bottom: 1.5rem; }
 
 .hero h1 {
-  font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(48px, 8vw, 92px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0 0 32px 0;
-  max-width: 18ch;
-}
-.hero h1 em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--amber);
-}
-
-.hero .lede {
-  font-size: 20px;
-  line-height: 1.55;
-  color: var(--ink);
-  max-width: 56ch;
-  margin: 0 0 40px 0;
-}
-
-.hero .coming-soon {
-  font-size: 14px;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-
-.appstore-link {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 10px 18px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  letter-spacing: 0.02em;
-  transition: border-color 120ms ease, background 120ms ease;
-}
-.appstore-link:hover { border-color: var(--amber); }
-
-/* ───────────────────── Section headings ───────────────────── */
-
-main h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 32px 0;
-}
-
-main h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.2;
+  font-size: clamp(3.4rem, 7.4vw, 6.6rem);
+  line-height: 0.98;
   letter-spacing: -0.01em;
-  margin: 0 0 12px 0;
-  color: var(--ink);
 }
 
-/* ───────────────────── The idea ───────────────────── */
+.hero h1 em { display: block; color: var(--honey); }
 
-.idea { max-width: 64ch; }
-.idea p { font-size: 19px; line-height: 1.65; }
+.lede { margin-top: 2rem; max-width: 30rem; color: var(--cream); opacity: 0.9; }
 
-/* ───────────────────── The app - screen grid ───────────────────── */
+/* The example evening */
 
-.screens-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 12px;
-}
+.tonight { margin: 0; }
 
-.screens-grid figure { margin: 0; }
-
-.screens-grid img {
-  width: 100%;
+.page {
+  position: relative;
+  min-height: 27rem;
+  padding: 1.75rem 1.75rem 1.5rem;
   border-radius: 28px;
-  background: var(--paper-deep);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 12px 32px rgba(42, 32, 24, 0.10);
+  background: linear-gradient(170deg, #241509, #170d06);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), inset 0 0 0 1px var(--hair);
+  display: flex;
+  flex-direction: column;
 }
 
-.screens-grid figcaption {
-  margin-top: 18px;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.5;
-  font-style: normal;
-}
-.screens-grid figcaption em {
-  font-style: italic;
-  color: var(--ink);
+.date { font-family: var(--display); font-size: 1.35rem; margin: 0 0 1rem; }
+.date .dot, .date .day { color: var(--amber); }
+
+.entry {
+  font-family: var(--display);
+  font-size: 1.55rem;
+  line-height: 1.32;
+  margin: 0;
+  min-height: 6.5rem;
 }
 
-/* ───────────────────── Also - numbered features ───────────────────── */
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--honey);
+  animation: blink 1.05s steps(1) infinite;
+}
 
-.also-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+.tonight.is-done .caret, .tonight.is-reflecting .caret { visibility: hidden; }
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.flame-rule {
+  display: flex;
   align-items: center;
-  margin: 64px 0;
-}
-.also-item:first-of-type { margin-top: 12px; }
-.also-item:nth-of-type(even) { direction: rtl; }
-.also-item:nth-of-type(even) > * { direction: ltr; }
-
-.also-item img {
-  width: 100%;
-  border-radius: 24px;
-  background: var(--paper-deep);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 12px 32px rgba(42, 32, 24, 0.10);
+  gap: 0.75rem;
+  margin: 1.4rem 0 1rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.also-num {
-  display: block;
-  font-family: var(--serif);
-  font-size: 13px;
+.flame-rule::after { content: ""; flex: 1; height: 1px; background: var(--hair); }
+
+.flame-rule svg { fill: var(--amber); transform-origin: 50% 100%; }
+
+.tonight.is-reflecting .flame-rule, .tonight.is-done .flame-rule { opacity: 1; transform: none; }
+.tonight.is-reflecting .flame-rule svg, .tonight.is-done .flame-rule svg { animation: wick 2.6s ease-in-out infinite; }
+
+@keyframes wick {
+  0%, 100% { transform: scale(1, 1) rotate(0); }
+  30% { transform: scale(0.94, 1.08) rotate(-3deg); }
+  60% { transform: scale(1.04, 0.95) rotate(2deg); }
+}
+
+.reflection {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  line-height: 1.32;
+  color: var(--honey);
+  margin: 0;
+  min-height: 4rem;
+}
+
+.reflection .w { opacity: 0; transition: opacity 0.7s ease; }
+.reflection .w.on { opacity: 1; }
+
+.page-foot { margin-top: auto; padding-top: 1.5rem; display: flex; justify-content: center; }
+
+.commit, .again {
+  font: inherit;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.6rem;
+  cursor: pointer;
+}
+
+.commit {
+  background: var(--honey);
+  color: var(--coal);
+  pointer-events: none;
+  transition: transform 0.15s ease, opacity 0.6s ease, background 0.3s ease;
+}
+
+.commit.is-pressed { transform: scale(0.94); background: #f6dcab; }
+.tonight.is-reflecting .commit, .tonight.is-done .commit { opacity: 0; }
+.tonight.is-done .commit { display: none; }
+
+.again { background: transparent; color: var(--amber); box-shadow: inset 0 0 0 1px var(--hair); }
+.again:hover { color: var(--honey); box-shadow: inset 0 0 0 1px var(--amber); }
+
+.tonight figcaption { margin-top: 1rem; font-size: 0.95rem; color: var(--muted); font-style: italic; }
+
+/* ---------- Leaves ---------- */
+
+.leaf, .screens {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(3.5rem, 7vw, 5.5rem) var(--gutter);
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 1rem clamp(2rem, 5vw, 4rem);
+  border-top: 1px solid var(--hair);
+}
+
+.margin {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--amber);
-  letter-spacing: 0.18em;
-  margin-bottom: 12px;
+  padding-top: 0.55rem;
 }
 
-.also-text p {
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--ink);
+.leaf-body { max-width: 38rem; }
+
+.big {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+/* Looking back */
+
+.sheet {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  border-radius: 24px;
+  background: var(--leaf);
+  box-shadow: inset 0 0 0 1px var(--hair);
+}
+
+.chips { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+
+.chip {
+  font: inherit;
+  font-size: 0.98rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(237, 199, 136, 0.1);
+  color: var(--cream);
+}
+
+.chip[aria-selected="true"] { background: var(--honey); color: var(--coal); }
+
+.lines { list-style: none; margin: 0; padding: 0; }
+
+.lines li {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: var(--honey);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.lines li:last-child { margin-bottom: 0; }
+.lines.is-shown li { opacity: 1; transform: none; }
+.lines.is-shown li:nth-child(2) { transition-delay: 0.45s; }
+.lines.is-shown li:nth-child(3) { transition-delay: 0.9s; }
+.lines.is-shown li:nth-child(4) { transition-delay: 1.35s; }
+
+/* The app */
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.strip figure { margin: 0; }
+
+.strip img {
+  border-radius: clamp(14px, 1.6vw, 24px);
+  box-shadow: 0 0 0 1px var(--hair), 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.strip figcaption { margin-top: 0.9rem; font-size: 0.95rem; color: var(--muted); line-height: 1.45; }
+.strip figcaption em { color: var(--cream); }
+
+/* On iPhone Duo */
+
+.duo { grid-column: 2; margin: 1.5rem 0 0; }
+
+.duo img {
+  border: 10px solid #0b0603;
+  border-radius: 26px;
+  box-shadow: 0 0 0 1px var(--hair), 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Yours */
+
+.yours {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.yours dt { font-family: var(--display); font-size: 1.6rem; margin-bottom: 0.5rem; }
+.yours dd { margin: 0; font-size: 1.05rem; color: var(--cream); opacity: 0.85; }
+
+/* Close */
+
+.close {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: clamp(5rem, 11vw, 8rem) var(--gutter) clamp(3rem, 6vw, 4rem);
+  text-align: center;
+  border-top: 1px solid var(--hair);
+}
+
+.close-line {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1;
+  color: var(--honey);
   margin: 0;
 }
 
-/* ───────────────────── Made by ───────────────────── */
+.maker { max-width: 34rem; margin: 3rem auto 0; font-size: 1.02rem; color: var(--muted); }
 
-.madeby { max-width: 60ch; }
-.madeby p { font-size: 17px; line-height: 1.65; color: var(--ink); }
+/* ---------- Footer ---------- */
 
-/* ───────────────────── Prose pages (privacy, support) ───────────────────── */
-
-main.prose h1 {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(40px, 6vw, 64px);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 80px 0 12px 0;
-  color: var(--ink);
-}
-
-main.prose .updated {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 48px;
-}
-
-main.prose h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--ink);
-  margin: 56px 0 16px 0;
-}
-
-main.prose h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 18px;
-  margin: 36px 0 8px 0;
-}
-
-main.prose p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--ink);
-}
-
-main.prose { padding-bottom: 100px; }
-
-/* ───────────────────── Footer ───────────────────── */
-
-.site-footer {
-  border-top: 1px solid var(--hairline);
-  margin-top: 0;
-}
-
-.footer-inner {
-  max-width: var(--max-wide);
+.foot {
+  max-width: var(--page);
   margin: 0 auto;
-  padding: 32px var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 13px;
+  padding: 2rem var(--gutter) 3rem;
+  border-top: 1px solid var(--hair);
+  font-size: 0.98rem;
   color: var(--muted);
 }
 
-.site-footer p { margin: 0; }
-.site-footer nav { display: flex; gap: 24px; }
-.site-footer a { color: var(--muted); text-decoration: none; }
-.site-footer a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--amber);
-  text-underline-offset: 3px;
+.foot nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-bottom: 0.75rem; }
+.foot p { margin: 0; }
+
+/* ---------- Document pages: privacy, support, event ---------- */
+
+.doc {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) var(--gutter) clamp(4rem, 8vw, 6rem);
 }
 
-/* ───────────────────── Fade-in on scroll ───────────────────── */
+.doc h1 { font-weight: 300; font-size: clamp(3rem, 7vw, 4.6rem); line-height: 1; }
+.doc .updated { margin-top: 1rem; color: var(--amber); }
+.doc h2 { font-size: clamp(1.8rem, 3.2vw, 2.3rem); color: var(--honey); margin: 3rem 0 0.75rem; }
+.doc h3 { font-size: 1.5rem; margin: 2rem 0 0.5rem; }
+.doc ul, .doc ol { padding-left: 1.2rem; }
+.doc li { margin-bottom: 0.4rem; }
+.doc .duo { margin: 2.5rem 0; }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
+/* ---------- Small screens ---------- */
+
+@media (max-width: 56rem) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .leaf, .screens { grid-template-columns: minmax(0, 1fr); }
+  .duo { grid-column: 1; }
+  .yours { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+
+  /* The screens become a strip you swipe. */
+  .strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 1rem;
+    scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip figure { flex: 0 0 62%; scroll-snap-align: start; }
+  .duo img { border-width: 6px; border-radius: 16px; }
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-  will-change: auto;
+@media (max-width: 34rem) {
+  body { font-size: 1.12rem; }
+  .bar nav { gap: 1rem; font-size: 1rem; }
+  .page { min-height: 25rem; padding: 1.4rem; }
+  .entry { font-size: 1.4rem; }
+  .reflection, .lines li { font-size: 1.32rem; }
+  .sheet { padding: 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in, .fade-in.visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ───────────────────── Responsive ───────────────────── */
-
-@media (max-width: 1000px) {
-  .screens-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 800px) {
-  body { font-size: 16px; }
-
-  .hero {
-    padding-top: 80px !important;
-    padding-bottom: 64px !important;
-  }
-  .hero .lede { font-size: 18px; }
-
-  main > section { padding: 56px 0; }
-
-  .screens-grid { grid-template-columns: 1fr; gap: 40px; }
-
-  .also-item {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin: 56px 0;
-  }
-  .also-item:nth-of-type(even) { direction: ltr; }
-
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 520px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding-top: 20px;
-  }
-  .brand-tag { font-size: 12px; }
+  .candle, .caret, .flame-rule svg { animation: none !important; }
+  .lines li, .reflection .w, .flame-rule { transition: none !important; }
 }

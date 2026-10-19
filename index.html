@@ -3,198 +3,224 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Vesperine - An evening journal.</title>
+<title>Vesperine, an evening journal</title>
 <meta name="description" content="A contemplative evening journal for iPhone. Write once when the day has settled, then look back across a week or a season in your own words.">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vesperine.app">
-<meta property="og:title" content="Vesperine - An evening journal.">
+<meta property="og:title" content="Vesperine, an evening journal">
 <meta property="og:description" content="A contemplative evening journal for iPhone. Write once when the day has settled, then look back across a week or a season in your own words.">
 <meta property="og:image" content="https://vesperine.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vesperine - An evening journal.">
+<meta name="twitter:title" content="Vesperine, an evening journal">
 <meta name="twitter:description" content="A contemplative evening journal for iPhone.">
 <meta name="twitter:image" content="https://vesperine.app/og-image.png">
-
 <link rel="canonical" href="https://vesperine.app">
-<meta name="theme-color" content="#FAF5EC">
-
-<!-- Favicon -->
+<meta name="theme-color" content="#1a0f08">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..500;9..144,300..500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- Styles -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
-
-<!-- Scripts -->
 <script defer src="/scripts.js"></script>
-
 </head>
-
 <body>
 
-<div class="wash"></div>
+<!-- The candle. A warm light in the corner that flickers, and burns down as
+     you read toward the end of the page, the way an evening does. -->
+<div class="candle" aria-hidden="true"></div>
 
-<header class="site-header">
-  <a href="/" class="brand">Vesperine</a>
-  <span class="brand-tag">An evening journal</span>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="mark" href="/">Vesperine</a>
+    <nav aria-label="Site">
+      <a href="/support">Support</a>
+      <a class="bar-cta" href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener">Get Vesperine</a>
+    </nav>
+  </div>
 </header>
 
 <main>
 
-  <section class="hero fade-in">
-    <h1>
-      Write once,<br>
-      <em>at the end of the day.</em>
-    </h1>
-    <p class="lede">
-      Vesperine is a contemplative evening journal. Write once when the day has settled, and the Mirror offers a single reflection in return, generated on your device and seen by no one else.
-    </p>
-    <a href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener" class="appstore-link">Download on the App Store</a>  </section>
-
-  <section class="idea fade-in">
-    <h2>The idea</h2>
-
-    <p>
-      Most journaling apps want more from you. Streaks to keep. Daily prompts. Reminders that nudge when you have missed a day. Word counts, mood graphs, year-in-review montages.
-    </p>
-
-    <p>
-      Vesperine asks for less. The idea is small. At the end of the day you write once, in plain words, about whatever the day held. When you finish, the Mirror offers a single quiet reflection on what you wrote. Then the evening is closed.
-    </p>
-
-    <p>
-      There are no streaks and no scores. If you skip a night, nothing breaks and nothing scolds you. The entries you keep are yours, written on your device and synced only through your own private iCloud.
-    </p>
-  </section>
-
-  <section class="screens fade-in">
-    <h2>The app</h2>
-
-    <div class="screens-grid">
-      <figure>
-        <img src="/images/tonight.png" alt="The Tonight screen: a dark, candle-lit writing surface with the date and a single field for the evening's entry.">
-        <figcaption>
-          <em>Tonight, the writing surface. One field, the end of the day.</em>
-        </figcaption>
-      </figure>
-
-      <figure>
-        <img src="/images/mirror.png" alt="The Mirror reflection revealed beneath a finished entry, set apart by a small amber flame divider.">
-        <figcaption>
-          <em>The Mirror, a single reflection once you finish writing.</em>
-        </figcaption>
-      </figure>
-
-      <figure>
-        <img src="/images/archive.png" alt="The Archive screen, showing past entries grouped by month, each with a short preview.">
-        <figcaption>
-          <em>The Archive, your nights gathered without a streak in sight.</em>
-        </figcaption>
-      </figure>
-
-      <figure>
-        <img src="/images/settings.png" alt="The Settings screen showing the iCloud sync row and the evening reminder options.">
-        <figcaption>
-          <em>Quiet settings, an evening reminder and private iCloud sync.</em>
-        </figcaption>
-      </figure>
-
-      <figure>
-        <img src="/images/lookingback.png" alt="The Looking back sheet, showing several passages lifted from earlier entries, each set in warm serif type.">
-        <figcaption>
-          <em>Looking back, a few lines from the week or the season.</em>
-        </figcaption>
-      </figure>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="kicker">An evening journal for iPhone and iPad</p>
+      <h1>Write once, <em>at the end of the day.</em></h1>
+      <p class="lede">
+        Write when the day has settled, and the Mirror offers a single
+        reflection in return, generated on your device and seen by no one
+        else. Then the evening is closed.
+      </p>
+      <p class="buy">
+        <a class="button" href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener">Download on the App Store</a>
+      </p>
     </div>
-  </section>
 
-  <section class="idea fade-in">
-    <h2>The Mirror</h2>
-    <p>
-      When you finish writing, the Mirror reads what you wrote and offers one short reflection back. It notices. It does not advise, fix, or cheer. It is a witness to the day you set down, nothing more.
-    </p>
-    <p>
-      The reflection is generated entirely on your device using Apple Intelligence. The words you write are never sent to KSQ Studios or to any server to be read. The Mirror sees them only on your phone, and only for as long as it takes to reflect.
-    </p>
-  </section>
-
-  <section class="idea fade-in">
-    <h2>Looking back</h2>
-    <p>
-      Some evenings you want to see further back than last night. Vesperine can gather a few lines from the past week, or from the season, and set them in front of you.
-    </p>
-    <p>
-      It does not summarise them or tell you what they meant. They are your own sentences, returned exactly as you wrote them. What they add up to is yours to decide.
-    </p>
-    <p>
-      Like the Mirror, this happens entirely on your device.
-    </p>
-  </section>
-
-  <section class="also fade-in">
-    <h2>Also</h2>
-
-    <div class="also-item">
-      <img src="/images/also-01-ondevice.png" alt="A reflection appearing beneath an entry, with a small note that it was generated on the device.">
-      <div class="also-text">
-        <span class="also-num">01</span>
-        <h3>On your device.</h3>
-        <p>The Mirror's reflections are generated on your iPhone using Apple Intelligence. Your writing is never sent away to be read. There is no account, and no server of ours in the loop.</p>
+    <!-- An example evening. The entry writes itself, Commit is pressed, and
+         the Mirror's reflection appears under the flame, as in the app. The
+         entries and reflections are written ahead of time for this page. -->
+    <figure class="tonight" id="tonight">
+      <div class="page">
+        <p class="date"><span id="t-date">October 19</span> <span class="dot">·</span> <span class="day" id="t-day">Monday</span></p>
+        <p class="entry" id="t-entry"><span id="t-text"></span><span class="caret" aria-hidden="true"></span></p>
+        <div class="flame-rule" id="t-rule" aria-hidden="true">
+          <svg viewBox="0 0 12 18" width="14" height="21"><path d="M6 1c1.6 3 4.5 5.2 4.5 9.2A4.5 4.5 0 0 1 1.5 10.2C1.5 7.8 3 6.6 3.6 4.6c.6 1.5 1.3 2 2 2.2C5.4 4.8 5.6 2.8 6 1z"/></svg>
+        </div>
+        <p class="reflection" id="t-reflection"></p>
+        <div class="page-foot">
+          <button type="button" class="commit" id="t-commit" tabindex="-1">Commit</button>
+          <button type="button" class="again" id="t-again" hidden>Another evening</button>
+        </div>
       </div>
-    </div>
+      <figcaption>An example evening, written for this page. In the app, the reflection comes from your own words, on your device.</figcaption>
+    </figure>
+  </section>
 
-    <div class="also-item">
-      <img src="/images/also-02-nostreaks.png" alt="The Archive shown as a calm list of months, with no streak counter or progress meter anywhere.">
-      <div class="also-text">
-        <span class="also-num">02</span>
-        <h3>No streaks.</h3>
-        <p>No counters, no daily goals, no reminders that scold. You write when you write. A missed night is just a night, not a broken chain.</p>
-      </div>
+  <section class="leaf">
+    <h2 class="margin">The idea</h2>
+    <div class="leaf-body">
+      <p class="big">Most journaling apps want more from you. Vesperine asks for less.</p>
+      <p>
+        No streaks to keep, no daily prompts, no reminders that nudge when
+        you have missed a day. No word counts, mood graphs, or year-in-review
+        montages.
+      </p>
+      <p>
+        At the end of the day you write once, in plain words, about whatever
+        the day held. When you finish, the Mirror offers a single quiet
+        reflection on what you wrote. Then the evening is closed, and if you
+        skip a night, nothing breaks and nothing scolds you.
+      </p>
     </div>
+  </section>
 
-    <div class="also-item">
-      <img src="/images/also-03-sync.png" alt="The Settings iCloud row indicating sync is on across iPhone and iPad.">
-      <div class="also-text">
-        <span class="also-num">03</span>
-        <h3>Yours, across your devices.</h3>
-        <p>Your entries sync across your iPhone and iPad through your own private iCloud, encrypted under your Apple ID. KSQ Studios has no servers involved and never receives a copy.</p>
+  <section class="leaf">
+    <h2 class="margin">The Mirror</h2>
+    <div class="leaf-body">
+      <p class="big">It notices. It does not advise, fix, or cheer. It is a witness to the day you set down.</p>
+      <p>
+        The reflection is generated entirely on your device using Apple
+        Intelligence. The words you write are never sent to KSQ Studios or to
+        any server to be read. The Mirror sees them only on your phone, and
+        only for as long as it takes to reflect.
+      </p>
+    </div>
+  </section>
+
+  <!-- Looking back. The lines arrive one at a time when the section comes
+       into view, and the two ranges trade places like the sheet in the app. -->
+  <section class="leaf lookback" id="lookback">
+    <h2 class="margin">Looking back</h2>
+    <div class="leaf-body">
+      <p>
+        Some evenings you want to see further back than last night. Vesperine
+        can gather a few lines from the past week, or from the season, and set
+        them in front of you. It does not summarize them or tell you what they
+        meant. They are your own sentences, returned exactly as you wrote them.
+      </p>
+      <div class="sheet">
+        <div class="chips" role="tablist" aria-label="Range">
+          <button type="button" role="tab" class="chip" aria-selected="true" data-range="week">This week</button>
+          <button type="button" role="tab" class="chip" aria-selected="false" data-range="season">This season</button>
+        </div>
+        <ul class="lines" data-range="week">
+          <li>Long call with the client that went better than I expected. I had braced for a fight that never came.</li>
+          <li>Kids were loud all evening and I did not mind it as much as I usually do.</li>
+          <li>Could not settle tonight. Kept picking up my phone and putting it down again.</li>
+          <li>Made dinner properly for the first time in a while. Ate at the table instead of standing up.</li>
+        </ul>
+        <ul class="lines" data-range="season" hidden>
+          <li>The light was going by the time I got home. Sat on the step until it was gone.</li>
+          <li>Woke at three and could not get back down. Lay there listening to the house.</li>
+          <li>The proposal slipped again. Third time now.</li>
+          <li>Took the long way home just to stay out a bit longer.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="madeby fade-in">
-    <h2>Made by</h2>
-    <p>
-      Vesperine is designed, built, and supported by one person, Kurt Klein, in Berwyn, Pennsylvania, under <a href="https://ksqstudios.com">KSQ Studios</a>.
+  <section class="screens">
+    <h2 class="margin">The app</h2>
+    <div class="strip">
+      <figure>
+        <img src="/images/tonight.png" alt="The Tonight screen: a dark writing surface with the date and a single field for the evening's entry." width="1320" height="2868" loading="lazy">
+        <figcaption><em>Tonight.</em> One field, the end of the day.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/mirror.png" alt="The Mirror's reflection beneath a finished entry, set apart by a small amber flame." width="1320" height="2868" loading="lazy">
+        <figcaption><em>The Mirror.</em> A single reflection once you finish.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/archive.png" alt="The Archive: past entries grouped by month, each with a short preview." width="1320" height="2868" loading="lazy">
+        <figcaption><em>The Archive.</em> Your nights, without a streak in sight.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/lookingback.png" alt="Looking back: several lines lifted from the week's entries, set in warm serif type." width="1320" height="2868" loading="lazy">
+        <figcaption><em>Looking back.</em> A few lines from the week or the season.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/settings.png" alt="Settings: an evening reminder that can follow the sunset, and private iCloud sync." width="1320" height="2868" loading="lazy">
+        <figcaption><em>Settings.</em> A quiet reminder, at sunset if you like.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="leaf spread">
+    <h2 class="margin">On iPhone Duo</h2>
+    <div class="leaf-body">
+      <p>
+        Unfold iPhone Duo in landscape and the evening page opens into a
+        spread: tonight's page on the left, where you write, and your recent
+        nights open beside it. New in 2.1, along with deleting any night.
+      </p>
+    </div>
+    <figure class="duo">
+      <img src="/images/duo.png" alt="Vesperine on the unfolded iPhone Duo: tonight's empty page on the left, a column of recent nights on the right." width="1600" height="1125" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="leaf">
+    <h2 class="margin">Yours</h2>
+    <dl class="yours">
+      <div>
+        <dt>On your device</dt>
+        <dd>The Mirror and Looking back run on your iPhone. Your writing is never sent away to be read. There is no account.</dd>
+      </div>
+      <div>
+        <dt>No streaks</dt>
+        <dd>No counters, no daily goals, no reminders that scold. A missed night is just a night, not a broken chain.</dd>
+      </div>
+      <div>
+        <dt>Across your devices</dt>
+        <dd>Entries sync between iPhone and iPad through your own private iCloud. KSQ Studios never receives a copy.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="close">
+    <p class="close-line">The evening is closed.</p>
+    <p class="buy">
+      <a class="button" href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener">Download on the App Store</a>
     </p>
-    <p>
-      If you have used it and want to say hello, report a bug, or suggest something: <a href="mailto:techsupport@ksqstudios.com">techsupport@ksqstudios.com</a>.
+    <p class="maker">
+      Vesperine is designed, built, and supported by one person, Kurt Klein,
+      in Berwyn, Pennsylvania, under <a href="https://ksqstudios.com">KSQ Studios</a>.
+      To say hello, report a bug, or suggest something, write to
+      <a href="mailto:techsupport@ksqstudios.com">techsupport@ksqstudios.com</a>.
     </p>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p>© 2026 KSQ Studios LLC · Vesperine</p>
-    <nav>
-      <a href="/privacy">Privacy</a>
-      <a href="/support">Support</a>
-      <a href="mailto:techsupport@ksqstudios.com">Email</a>
-    </nav>
-  </div>
+<footer class="foot">
+  <nav aria-label="Footer">
+    <a href="/privacy">Privacy</a>
+    <a href="/support">Support</a>
+    <a href="https://ksqstudios.com">KSQ Studios</a>
+  </nav>
+  <p>2026 KSQ Studios LLC. Vesperine is made in Berwyn, Pennsylvania.</p>
 </footer>
 
 </body>

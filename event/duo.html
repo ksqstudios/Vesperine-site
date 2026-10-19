@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Vesperine 2.1 - Vesperine</title>
+<title>Vesperine 2.1</title>
 <meta name="description" content="Vesperine 2.1 opens the evening page into a spread on iPhone Duo, lets you delete any night, and keeps the Mirror closer to your own words.">
 <link rel="canonical" href="https://vesperine.app/event/duo">
-<meta name="theme-color" content="#FAF5EC">
+<meta name="theme-color" content="#1a0f08">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vesperine.app/event/duo">
@@ -20,28 +20,35 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..500;9..144,300..500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/styles.css">
-
-<script defer src="/scripts.js"></script>
 
 </head>
 
 <body>
 
-<div class="wash"></div>
+<div class="candle" aria-hidden="true"></div>
 
-<header class="site-header">
-  <a href="/" class="brand">Vesperine</a>
-  <span class="brand-tag">An evening journal</span>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="mark" href="/">Vesperine</a>
+    <nav aria-label="Site">
+      <a href="/support">Support</a>
+      <a class="bar-cta" href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener">Get Vesperine</a>
+    </nav>
+  </div>
 </header>
 
-<main class="prose fade-in">
+<main class="doc">
 
   <h1>Vesperine 2.1</h1>
 
   <p class="updated">Two pages on iPhone Duo, and nights you can delete.</p>
+
+  <figure class="duo">
+    <img src="/images/duo.png" alt="Vesperine on the unfolded iPhone Duo: tonight's empty page on the left, a column of recent nights on the right." width="1600" height="1125">
+  </figure>
 
   <h2>Built for iPhone Duo</h2>
   <p>
@@ -58,21 +65,19 @@
     Reflections now rest on words you actually wrote, and are less likely to repeat an entry back to you.
   </p>
 
-  <p>
-    <a href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener" class="appstore-link">Download on the App Store</a>
+  <p class="buy">
+    <a class="button" href="https://apps.apple.com/us/app/vesperine/id6767848257" rel="noopener">Download on the App Store</a>
   </p>
 
 </main>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p>© 2026 KSQ Studios LLC · Vesperine</p>
-    <nav>
-      <a href="/privacy">Privacy</a>
-      <a href="/support">Support</a>
-      <a href="mailto:techsupport@ksqstudios.com">Email</a>
-    </nav>
-  </div>
+<footer class="foot">
+  <nav aria-label="Footer">
+    <a href="/privacy">Privacy</a>
+    <a href="/support">Support</a>
+    <a href="https://ksqstudios.com">KSQ Studios</a>
+  </nav>
+  <p>2026 KSQ Studios LLC. Vesperine is made in Berwyn, Pennsylvania.</p>
 </footer>
 
 </body>
